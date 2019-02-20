@@ -45,8 +45,8 @@ class ViewController: UIViewController {
 	
 	func retrieveJoke() {
 		statusTextLabel.text = "Getting a Joke from the Chuck"
-		//guard let rateURL = URL(string: "https://api.chucknorris.io/jokes/random") else { return }
-		guard let rateURL = URL(string: "http://localhost:3002/fortune/2") else { return }
+		guard let rateURL = URL(string: "https://api.chucknorris.io/jokes/random") else { return }
+		//guard let rateURL = URL(string: "http://localhost:3002/fortune/2") else { return }
 		//guard let rateURL = URL(string: "http://atn010.com/webjsondatabase.github.io/") else { return }
 		let session = URLSession(configuration: .ephemeral)
 		
@@ -80,7 +80,7 @@ class ViewController: UIViewController {
 						let jokeText = jsonDictionary["value"] as! String
 						//let jokeText = jsonDictionary["joke"] as! String
 						DispatchQueue.global(qos: .utility).async {
-						//	self.checkJokeID(id: jokeID, text: jokeText)
+							self.checkJokeID(id: jokeID, text: jokeText)
 						}
 						print(jsonDictionary)
 						print("\n\n")
@@ -90,9 +90,9 @@ class ViewController: UIViewController {
 						
 						DispatchQueue.main.async {
 							
-							//self.jokeTextLabel.text = jokeText
-							//self.statusTextLabel.text = "BAM! Click the bottom for more!"
-							//self.getJokeButton.isEnabled = true
+							self.jokeTextLabel.text = jokeText
+							self.statusTextLabel.text = "BAM! Click the bottom for more!"
+							self.getJokeButton.isEnabled = true
 						}
 
 						
